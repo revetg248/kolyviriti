@@ -8,7 +8,8 @@ import random
 #Менять только эти 2 значения
 
 #Ваш айди в тлеграм
-admin_id = 772689188, 474340070
+admin_id = 772689188
+admin2_id = 474340070
 # токен от бота
 token = '1023894504:AAGAW4hAfTFYaDkzoCU9LtsFg7HUn4J5zRc'
 #=====================
@@ -36,7 +37,7 @@ except:
 @bot.message_handler(commands=['start_edit'])
 def start_message_edit(message):
 	try:
-		if message.from_user.id == admin_id:
+		if message.from_user.id == admin_id or admin2_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/start_edit ', ''))+"' WHERE name='start_message'")
