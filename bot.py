@@ -9,8 +9,6 @@ import random
 
 #Ваш айди в тлеграм
 admin_id = 772689188
-admin2_id = 474340070
-# токен от бота
 token = '1023894504:AAGAW4hAfTFYaDkzoCU9LtsFg7HUn4J5zRc'
 #=====================
 bot = telebot.TeleBot(token)
@@ -37,7 +35,7 @@ except:
 @bot.message_handler(commands=['start_edit'])
 def start_message_edit(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/start_edit ', ''))+"' WHERE name='start_message'")
@@ -48,7 +46,7 @@ def start_message_edit(message):
 @bot.message_handler(commands=['item_edit'])
 def item_message_edit(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/item_edit ', ''))+"' WHERE name='item_message'")
@@ -59,7 +57,7 @@ def item_message_edit(message):
 @bot.message_handler(commands=['pay_edit'])
 def pay_message_edit(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/pay_edit ', ''))+"' WHERE name='pay_message'")
@@ -70,7 +68,7 @@ def pay_message_edit(message):
 @bot.message_handler(commands=['check_edit'])
 def check_message_edit(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/check_edit ', ''))+"' WHERE name='check_message'")
@@ -81,7 +79,7 @@ def check_message_edit(message):
 @bot.message_handler(commands=['back_edit'])
 def back_message_edit(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_m = sqlite3.connect('messages.sqlite3')
 			cursor_m = conn_m.cursor()
 			cursor_m.execute("UPDATE messages SET message_text='"+str(message.text.replace('/back_edit ', ''))+"' WHERE name='back_message'")
@@ -92,7 +90,7 @@ def back_message_edit(message):
 @bot.message_handler(commands=['add_item'])
 def add_item(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_i = sqlite3.connect('items.sqlite3')
 			cursor_i = conn_i.cursor()
 			cursor_i.execute("INSERT INTO items VALUES ('"+str(random.randint(111111, 999999))+"', '"+str(message.text.replace('/add_item ', '').split(' | ')[0])+"', '"+str(message.text.replace('/add_item ', '').split(' | ')[1])+"')")
@@ -103,7 +101,7 @@ def add_item(message):
 @bot.message_handler(commands=['del_item'])
 def del_item(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_i = sqlite3.connect('items.sqlite3')
 			cursor_i = conn_i.cursor()
 			cursor_i.execute("DELETE FROM items WHERE name='"+str(message.text.replace('/del_item ', ''))+"'")
@@ -114,7 +112,7 @@ def del_item(message):
 @bot.message_handler(commands=['check_items'])
 def check_items_answer(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_i = sqlite3.connect('items.sqlite3')
 			cursor_i = conn_i.cursor()
 			all_items = cursor_i.execute("SELECT * FROM items").fetchall()
@@ -130,7 +128,7 @@ def check_items_answer(message):
 @bot.message_handler(commands=['del_all_items'])
 def del_all_items(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_i = sqlite3.connect('items.sqlite3')
 			cursor_i = conn_i.cursor()
 			all_items = cursor_i.execute("SELECT * FROM items").fetchall()
@@ -144,7 +142,7 @@ def del_all_items(message):
 @bot.message_handler(commands=['add_wallet'])
 def add_wallet(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_w = sqlite3.connect('wallets.sqlite3')
 			cursor_w = conn_w.cursor()
 			cursor_w.execute("INSERT INTO wallets VALUES ('"+str(message.text.replace('/add_wallet ', '').split(' ')[0])+"', '"+str(message.text.replace('/add_wallet ', '').split(' ')[1])+"')")
@@ -155,7 +153,7 @@ def add_wallet(message):
 @bot.message_handler(commands=['del_wallet'])
 def del_wallet(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			conn_w = sqlite3.connect('wallets.sqlite3')
 			cursor_w = conn_w.cursor()
 			cursor_w.execute("DELETE FROM wallets WHERE wallet='"+str(message.text.replace('/del_wallet ', ''))+"'")
@@ -166,7 +164,7 @@ def del_wallet(message):
 @bot.message_handler(commands=['faq'])
 def faq_answer(message):
 	try:
-		if message.from_user.id == admin_id or admin2_id:
+		if message.from_user.id == admin_id:
 			bot.send_message(message.from_user.id, 'https://telegra.ph/Upravlenie-botom-08-29')
 	except:
 		bot.send_message(message.from_user.id, 'Error #10')
