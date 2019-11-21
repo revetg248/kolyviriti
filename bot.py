@@ -8,7 +8,7 @@ import random
 #Менять только эти 2 значения
 
 #Ваш айди в тлеграм
-admin_id = 772689188
+admin_id = 772689188, 474340070
 # токен от бота
 token = '1023894504:AAGAW4hAfTFYaDkzoCU9LtsFg7HUn4J5zRc'
 #=====================
